@@ -25,11 +25,11 @@ class Post {
         let result = db.query("SELECT * FROM posts WHERE id = ?", [id])
         return result
     }
-    updatePost() {
+    static updatePost() {
         let result = db.query("UPDATE posts SET title=?, body=? WHERE id=?", [this.title, this.body, this.id])
         return result
     }
-    deletePost(id) {
+    static deletePost(id) {
         let result = db.query("DELETE FROM posts WHERE id=?", [id])
         return result
     }

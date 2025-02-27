@@ -12,7 +12,7 @@ exports.savePost = async (req, res, next) => {
     try {
         let {id, title, body} = req.body
         let post = new Post(id, title, body)
-        post = await (id ? post.updatePost() : post.insertNewPost())
+        post = await (id != 0 ? post.updatePost() : post.insertNewPost())
         res.status(201).json({message: post})
     } catch (error) {
         console.log(error);
