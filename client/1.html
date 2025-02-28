@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let response
+        async function data_taker() {
+            let data = await fetch(`http://localhost:3000/posts/`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json' // Specify that you're sending JSON data
+                },
+                body: JSON.stringify(
+                    { id: 5, title: "title_test", body: "body_text using fetch" })
+                })
+            response = await data.json()
+            console.log(response);
+        }
+        data_taker()
+    </script>
+</body>
+
+</html>
