@@ -8,11 +8,22 @@ exports.getAllPosts = async (req, res, next) => {
         next(error)
     }
 }
-exports.savePost = async (req, res, next) => {
+exports.createPost = async (req, res, next) => {
+    try {
+        let {title, body} = req.body
+        let post = new Post(0, title, body)
+        post = await post.insertNewPost()
+        res.status(201).json({message: post})
+    } catch (error) {
+        console.log(error);
+        next(error)
+    }
+}
+exports.changePost = async (req, res, next) => {
     try {
         let {id, title, body} = req.body
         let post = new Post(id, title, body)
-        post = await (id != 0 ? post.updatePost() : post.insertNewPost())
+        post = await post.updatePost()
         res.status(201).json({message: post})
     } catch (error) {
         console.log(error);

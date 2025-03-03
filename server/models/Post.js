@@ -25,7 +25,7 @@ class Post {
         let result = db.query("SELECT * FROM posts WHERE id = ?", [id])
         return result
     }
-    static updatePost() {
+    updatePost() {
         let result = db.query("UPDATE posts SET title=?, body=? WHERE id=?", [this.title, this.body, this.id])
         return result
     }

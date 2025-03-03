@@ -5,7 +5,8 @@ const router = express.Router()
 //route get && post - /posts/
 router.route("/")
     .get(postControllers.getAllPosts)
-    .post(postControllers.savePost)
+    .post(postControllers.createPost)
+    .put(postControllers.changePost)
 
 router.route("/:id")
     .get(postControllers.getPostById)
